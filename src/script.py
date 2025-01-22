@@ -1,9 +1,25 @@
 import requests
+import json
 
 def main():
-    payload = {"model": "llama3.3:70b", "prompt": "This is a test prompt. Please confirm you are working by saying 'Hello World!'", "stream": False}
-    r = requests.post('http://localhost:11434/api/generate', json=payload)
-    print(r.text)
-    print("test")
+    lines = []
 
+    print("Running...")
+
+    # json goes in the payload
+    payload = {}
+    r = requests.post('http://localhost:11434/api/generate', json=payload)
+
+    # printing the output works but saving it to a file doesn't
+    print(r.json())
+    lines.append(json.dumps(r.json()) + "\n")
+
+    with open ("src/test_output.jsonl", "a") as writeFile:
+        writeFile.writelines(lines)
+        
+        
+    print("Done")
+
+
+        
 main()
