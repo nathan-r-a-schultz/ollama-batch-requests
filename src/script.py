@@ -3,7 +3,7 @@ import json
 from tqdm import tqdm
 
 def main():
-    MODEL = "sushruth/solar-uncensored:latest"
+    MODEL = "deepseek-r1:70b"
     
     print("Running...")
 
@@ -27,12 +27,17 @@ def main():
         for line in tqdm(input_file, total=total_lines, desc="Processing requests"):
             # Parse each line as JSON
             payload = json.loads(line.strip())
+            payload['model'] = MODEL
+
+            if "format" in payload:
+                del payload["format"]
             
             # Make API request with the payload
             r = requests.post('http://localhost:11434/api/generate', json=payload)
             
             # Get the response and save it immediately
             response = r.json()
+            response["response"] = response["response"].split("```json")[1].split("```")[0].strip()
             
             # Write response immediately to output file
             with open("src/ollama_batch_api_output.jsonl", "a") as write_file:
