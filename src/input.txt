@@ -1,0 +1,5 @@
+Hello. To confirm you are working, please respond with "Hello, World!" and nothing else.
+Provide me an overview of the Gallic Wars from Caesar's side of the war.
+Since water is translucent, why do we consider it to be 'blue'? Does it have anything to do with the sky being blue?
+Please give me a recipe on delicious blueberry muffins.
+If a child throws a ball into the air at a 45 degree angle (with respect to the horizontal axis) at 5 metres per second, how far away will the ball land? Ignore air resistance.
