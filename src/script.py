@@ -2,7 +2,12 @@ import requests
 import json
 from tqdm import tqdm
 
+<<<<<<< HEAD
+def main():
+    MODEL = "deepseek-r1:70b"
+=======
 def jsonl(inputFile, outputFile, MODEL):
+>>>>>>> 6be768c85036702928defe1b03fc61ea03e91662
     
     print("[%s][JSONL] Running..." % (MODEL))
 
@@ -26,8 +31,13 @@ def jsonl(inputFile, outputFile, MODEL):
         for line in tqdm(input_file, total=total_lines, desc="Processing requests"):
             # Parse each line as JSON
             payload = json.loads(line.strip())
+<<<<<<< HEAD
+            payload["model"] = MODEL
+            # Remove the "format" key if it exists in the payload
+=======
             payload['model'] = MODEL
 
+>>>>>>> 6be768c85036702928defe1b03fc61ea03e91662
             if "format" in payload:
                 del payload["format"]
             
@@ -36,7 +46,11 @@ def jsonl(inputFile, outputFile, MODEL):
             
             # Get the response and save it immediately
             response = r.json()
+<<<<<<< HEAD
+            response["response"] = response["response"].replace("```json", "").replace("```", "")
+=======
             response["response"] = response["response"].split("```json")[1].split("```")[0].strip()
+>>>>>>> 6be768c85036702928defe1b03fc61ea03e91662
             
             # Write response immediately to output file
             with open("src/" + outputFile, "a") as write_file:
