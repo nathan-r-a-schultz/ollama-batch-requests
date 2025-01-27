@@ -60,7 +60,7 @@ def txt(inputFile, outputFile, MODEL):
             "stream": False,
         }
         initResponse = requests.post('http://localhost:11434/api/generate', json=payload)
-        print(initResponse.json()['response'])
+        print(json.dumps(initResponse.json()))
         print("Model initialized, processing requests...")
 
         # Add progress bar
@@ -76,18 +76,14 @@ def txt(inputFile, outputFile, MODEL):
             
             # Get the response and save it immediately
             full_response = r.text
-            try:
-                # Parse each line of the response separately
-                responses = [json.loads(resp) for resp in full_response.strip().split('\n')]
-                response = responses[-1]  # Take the last response
-            except json.JSONDecodeError:
-                # Fallback to standard parsing if splitting fails
-                response = r.json()
+            responses = [json.loads(resp) for resp in full_response.strip().split('\n')]
+            response_texts = [resp["response"] for resp in responses]
+            response = ' '.join(response_texts)
 
             with open("src/" + outputFile, "a") as write_file:
                 write_file.write(json.dumps({
                     "input": line.strip(),
-                    "response": response["response"]
+                    "response": response
                 }) + "\n")
     
     print("Done")
@@ -100,7 +96,7 @@ def main():
     # inputFile = "input.jsonl"
     # outputFile = "output.jsonl"
 
-    MODEL = "deepseek-r1:1.5b"
+    MODEL = "deepseek-r1:32b"
 
     if (inputFile.endswith(".jsonl")):
         jsonl(inputFile, outputFile, MODEL)
