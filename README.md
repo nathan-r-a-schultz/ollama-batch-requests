@@ -27,7 +27,7 @@ The Ollama Batch Requesting Tool is a command-line tool that enables batch proce
 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/ollama-batch-requests.git
+git clone https://github.com/nathan-r-a-schultz/ollama-batch-requests.git
 cd ollama-batch-requests
 ```
 
