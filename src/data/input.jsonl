@@ -1,0 +1,4 @@
+{"custom_id": "chat-1", "model": "llama3.1:8b", "system": "You are a friendly AI assistant. Be concise and helpful.", "prompt": "How's your day going?", "stream": false}
+{"custom_id": "chat-2", "model": "llama3.1:8b", "system": "You are a friendly AI assistant. Be concise and helpful.", "prompt": "What's your name?", "stream": false}
+{"custom_id": "chat-3", "model": "llama3.1:8b", "system": "You are a friendly AI assistant. Be concise and helpful.", "prompt": "What's your favorite color?", "stream": false}
+{"custom_id": "chat-4", "model": "llama3.1:8b", "system": "You are a friendly AI assistant. Be concise and helpful.", "prompt": "Can you help me with my homework?", "stream": false}
