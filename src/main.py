@@ -1,3 +1,4 @@
+import json
 import requests
 from request.start_batch import jsonl
 from request.start_batch import txt
@@ -85,13 +86,23 @@ def singleRequest():
         payload["system"] = system_prompt
 
     r = requests.post("http://localhost:11434/api/generate", json=payload)
-    print(r.json()['response'])
+    print(f"[{model}]: {r.json()['response']}")
 
     while True:
         saveChoice = input("Would you like to save the response? (y/n): ")
         if saveChoice == "y":
-            with open("src/data/output.txt", "a") as f:
-                f.write(r.json()['response'] + "\n")
+            saveType = int(input("Enter the save type (1. JSONL, 2. TXT): "))
+            if saveType == 1:
+                with open("src/data/output.jsonl", "a") as f:
+                    f.write(json.dumps(r.json()) + "\n")
+                print("Response appended to src/data/output.jsonl")
+            elif saveType == 2:
+                with open("src/data/output.txt", "a") as f:
+                    f.write(json.dumps({
+                        "input": prompt,
+                        "response": r.json()['response']
+                        }) + "\n")
+                print("Response appended to src/data/output.txt")
             break
         elif saveChoice == "n":
             break

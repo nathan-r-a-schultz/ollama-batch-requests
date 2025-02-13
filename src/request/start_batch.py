@@ -85,7 +85,7 @@ def txt(inputFile, outputFile, MODEL):
 
     # Count total lines in input file first for the progress bar
     with open(inputFile, "r") as input_file:
-        total_lines = sum(1 for _ in input_file)
+        total_lines = sum(1 for line in input_file if line.strip())
 
     # Read input file line by line
     with open(inputFile, "r") as input_file:
@@ -102,6 +102,8 @@ def txt(inputFile, outputFile, MODEL):
 
         # Add progress bar
         for line in tqdm(input_file, total=total_lines, desc="Processing requests"):
+            if line.strip() == "":
+                continue
             # Parse each line as JSON
             payload = {
                 "model": MODEL,
@@ -117,7 +119,7 @@ def txt(inputFile, outputFile, MODEL):
             with open(outputFile, "a") as write_file:
                 write_file.write(json.dumps({
                     "input": line.strip(),
-                    "response": response
+                    "response": response['response']
                 }) + "\n")
 
     print(f"{total_lines} {'requests' if total_lines != 1 else 'request'} completed successfully.")
