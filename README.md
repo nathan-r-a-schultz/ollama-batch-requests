@@ -51,7 +51,7 @@ python src/main.py
 
 #### JSONL Object Format
 ```json
-{"custom_id": "chat-1", "model": "llama2", "system": "You are a helpful assistant.", "prompt": "How are you?", "stream": false}
+{"custom_id": "chat-1", "model": "llama3.1:8b", "system": "You are a helpful assistant.", "prompt": "How are you?", "stream": false}
 ```
 
 #### TXT Format
