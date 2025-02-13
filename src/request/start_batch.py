@@ -78,7 +78,7 @@ def jsonl(inputFile, outputFile, MODEL, modelOverride):
     except Exception as e:
         print(f"Unexpected error: {e}")
 
-    print(f"{total_lines} {'requests' if total_lines != 1 else 'request'} completed successfully.")
+    print(f"{total_lines} {'requests' if total_lines != 1 else 'request'} completed successfully.\nSaved to {outputFile}")
 
 def txt(inputFile, outputFile, MODEL):
     print("[%s][TXT] Running..." % (MODEL))
@@ -122,4 +122,4 @@ def txt(inputFile, outputFile, MODEL):
                     "response": response['response']
                 }) + "\n")
 
-    print(f"{total_lines} {'requests' if total_lines != 1 else 'request'} completed successfully.")
+    print(f"{total_lines} {'requests' if total_lines != 1 else 'request'} completed successfully.\nSaved to {outputFile}")
