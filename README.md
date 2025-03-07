@@ -1,5 +1,7 @@
 <div align="center">
 
+![TXT Batch Run](docs/batch_txt.jpg)
+
 # Ollama Batch Requesting Tool
 
 A Python script for efficiently processing batch requests to a local Ollama instance.

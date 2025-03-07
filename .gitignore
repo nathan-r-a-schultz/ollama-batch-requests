@@ -3,3 +3,11 @@ myOutput.jsonl
 checkDiff.py
 output.jsonl
 output.txt
+
+# Python
+src/request/__pycache__/
+src/request/*.pyc
+src/request/*.pyo
+src/request/*.pyd
+src/request/*.pyw
+
